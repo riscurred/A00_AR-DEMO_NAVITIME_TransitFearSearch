@@ -1,2 +1,2 @@
-# A00_AR-DEMO_YahooTransitFearSearch
-A00_ARデモ_Yahoo!交通費検索
+# A00_AR-DEMO_NAVITIME_TransitFearSearch
+A00_ARデモ_NAVITIME交通費検索
