@@ -1,6 +1,6 @@
 {
-  "name": "A00_ARデモ_Yahoo交通費検索",
-  "description": "【Attended Robot デモ】\r\nExcelに記載された経路（出発地と到着地）を Yahoo! 路線情報 で検索して、その最安値をExcelに追記します",
+  "name": "A00_ARデモ_NAVITIME交通費検索",
+  "description": "【Attended Robot デモ】\r\nExcelに記載された経路（出発地と到着地）を NAVITIME で検索して、その最安値をExcelに追記します",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.11.4]",
@@ -41,7 +41,7 @@
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": false
+    "modernBehavior": true
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [

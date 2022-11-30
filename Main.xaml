@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1139.2,3955.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:usa="clr-namespace:UiPathTeam.Subtitle.Activities;assembly=SubtitleActivity" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1139.2,3917.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:usa="clr-namespace:UiPathTeam.Subtitle.Activities;assembly=SubtitleActivity" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
@@ -38,7 +38,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -69,15 +69,16 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>SubtitleActivity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="1149.6,3890.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence sap:VirtualizedContainerService.HintSize="1149.6,3852.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Web" sap:VirtualizedContainerService.HintSize="1108,3797.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Web" sap:VirtualizedContainerService.HintSize="1108,3760" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="priceString" />
         <Variable x:TypeArguments="x:String" Name="desktopPath" />
@@ -87,16 +88,16 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <usa:DisplayPanelActivity ContinueOnError="{x:Null}" BackgroundColor="Black" BackgroundOpacity="0.8" DisplayName="Display Panel_スタート説明" DurationMS="10000" FontSize="48" sap:VirtualizedContainerService.HintSize="1066.4,80.8" sap2010:WorkflowViewState.IdRef="DisplayPanelActivity_1" Message="このプロセスでは、Excelに記載された経路（出発地と到着地）を Yahoo! 路線情報 で検索して、その最安値をExcelに追記します" TextColor="White" />
+      <usa:DisplayPanelActivity ContinueOnError="{x:Null}" BackgroundColor="Black" BackgroundOpacity="0.8" DisplayName="Display Panel_スタート説明" DurationMS="10000" FontSize="48" sap:VirtualizedContainerService.HintSize="1066.4,80.8" sap2010:WorkflowViewState.IdRef="DisplayPanelActivity_1" Message="このプロセスでは、Excelに記載された経路（出発駅と到着駅）を NAVITIME で検索して、その最安値をExcelに追記します" TextColor="White" />
       <usa:DisplaySubtitleActivity ContinueOnError="{x:Null}" BackgroundColor="Black" BackgroundOpacity="0.8" DisplayName="Display Subtitle_ブラウザ起動" DurationMS="3000" FontSize="38" sap:VirtualizedContainerService.HintSize="1066.4,80.8" sap2010:WorkflowViewState.IdRef="DisplaySubtitleActivity_8" Message="検索したい経路が含まれるExcelファイルを開きます" TextColor="White" />
       <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[desktopPath]" sap:VirtualizedContainerService.HintSize="1066.4,62.4" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="Desktop" />
-      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1066.4,3112" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[Path.Combine(desktopPath, &quot;A00_ARデモ_Yahoo交通費検索&quot;, &quot;経路一覧.xlsx&quot;)]">
+      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1066.4,3074.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[Path.Combine(desktopPath, &quot;A00_ARデモ_Yahoo交通費検索&quot;, &quot;検索用ブック.xlsx&quot;)]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1032.8,3002.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1032.8,2964.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <Sequence.Variables>
                 <Variable x:TypeArguments="sd:DataTable" Name="table" />
               </Sequence.Variables>
@@ -105,7 +106,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ExcelReadRange AddHeaders="True" DataTable="[table]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="991.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="経路一覧">
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[table]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="991.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="検索ルート一覧">
                 <ui:ExcelReadRange.Range>
                   <InArgument x:TypeArguments="x:String">
                     <Literal x:TypeArguments="x:String" Value="" />
@@ -113,13 +114,13 @@
                 </ui:ExcelReadRange.Range>
               </ui:ExcelReadRange>
               <usa:DisplaySubtitleActivity ContinueOnError="{x:Null}" BackgroundColor="Black" BackgroundOpacity="0.8" DisplayName="Display Subtitle_ブラウザ起動" DurationMS="3000" FontSize="38" sap:VirtualizedContainerService.HintSize="991.2,80.8" sap2010:WorkflowViewState.IdRef="DisplaySubtitleActivity_1" Message="ブラウザを起動します" TextColor="White" />
-              <ui:OpenBrowser Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" AutomaticallyDownloadWebDriver="True" BrowserType="Edge" CommunicationMethod="WebDriver" DisplayName="Open Browser_Yahoo! 路線情報" sap:VirtualizedContainerService.HintSize="991.2,2688.8" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://transit.yahoo.co.jp/">
+              <ui:OpenBrowser Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" AutomaticallyDownloadWebDriver="True" BrowserType="Edge" CommunicationMethod="WebDriver" DisplayName="Open Browser_Yahoo! 路線情報" sap:VirtualizedContainerService.HintSize="991.2,2651.2" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://www.navitime.co.jp/transfer/">
                 <ui:OpenBrowser.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="957.6,2586.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="957.6,2548.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Int32" Name="index" />
                       </Sequence.Variables>
@@ -129,24 +130,25 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="916,22.4" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                      <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="916,22.4" sap2010:WorkflowViewState.IdRef="Delay_2" />
                       <usa:DisplaySubtitleActivity ContinueOnError="{x:Null}" BackgroundColor="Black" BackgroundOpacity="0.8" DisplayName="Display Subtitle" DurationMS="3000" FontSize="38" sap:VirtualizedContainerService.HintSize="916,80.8" sap2010:WorkflowViewState.IdRef="DisplaySubtitleActivity_7" Message="Excelに記載された経路を上から1件ずつ検索します" TextColor="White" />
-                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[index]" DataTable="[table]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="916,2064.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[index]" DataTable="[table]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="916,1964.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="882.4,1944" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="882.4,1844" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <usa:DisplaySubtitleActivity ContinueOnError="{x:Null}" BackgroundColor="Black" BackgroundOpacity="0.8" DisplayName="Display Subtitle" DurationMS="3000" FontSize="38" sap:VirtualizedContainerService.HintSize="840.8,80.8" sap2010:WorkflowViewState.IdRef="DisplaySubtitleActivity_2" Message="[String.Format(&quot;{0}件目のデータ: {1} → {2}&quot;, index + 1, row(&quot;出発地&quot;), row(&quot;到着地&quot;))]" TextColor="White" />
+                              <usa:DisplaySubtitleActivity ContinueOnError="{x:Null}" BackgroundColor="Black" BackgroundOpacity="0.8" DisplayName="Display Subtitle" DurationMS="3000" FontSize="38" sap:VirtualizedContainerService.HintSize="840.8,80.8" sap2010:WorkflowViewState.IdRef="DisplaySubtitleActivity_2" Message="[String.Format(&quot;{0}件目のデータ: {1} → {2}&quot;, index + 1, row(&quot;出発駅&quot;), row(&quot;到着駅&quot;))]" TextColor="White" />
                               <Parallel sap:VirtualizedContainerService.HintSize="840.8,202.4" sap2010:WorkflowViewState.IdRef="Parallel_1">
                                 <ui:Highlight HighlightTime="{x:Null}" Color="Highlight" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="Highlight_1">
                                   <ui:Highlight.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cbbdf91-2f82-4081-a989-3fc3b982c35c" Selector="&lt;webctrl id='query_input' tag='INPUT' type='text' /&gt;">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cbbdf91-2f82-4081-a989-3fc3b982c35c" Selector="&lt;webctrl id='orv-station-name' tag='INPUT' /&gt;">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -156,9 +158,9 @@
                                     </ui:Target>
                                   </ui:Highlight.Target>
                                 </ui:Highlight>
-                                <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text 'INPUT  query_input'" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[row(&quot;出発地&quot;).ToString]">
+                                <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text 'INPUT  query_input'" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[row(&quot;出発駅&quot;).ToString]">
                                   <ui:SetValue.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="423befd0-9048-49e5-9009-1922863194a7" InformativeScreenshot="f6f14a4a202a4c856ebc7f946979eeba" Selector="&lt;webctrl id='query_input' tag='INPUT' type='text' /&gt;" WaitForReady="COMPLETE">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="423befd0-9048-49e5-9009-1922863194a7" InformativeScreenshot="5788b54b0e784d41c728a09b8c3e1b75" Selector="&lt;webctrl id='orv-station-name' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -169,7 +171,7 @@
                               <Parallel sap:VirtualizedContainerService.HintSize="840.8,202.4" sap2010:WorkflowViewState.IdRef="Parallel_2">
                                 <ui:Highlight HighlightTime="{x:Null}" Color="Highlight" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="Highlight_2">
                                   <ui:Highlight.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cbbdf91-2f82-4081-a989-3fc3b982c35c" Selector="&lt;webctrl id='query_input' name='to' tag='INPUT' type='text' /&gt;">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cbbdf91-2f82-4081-a989-3fc3b982c35c" Selector="&lt;webctrl id='dnv-station-name' tag='INPUT' type='text' /&gt;">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -179,9 +181,9 @@
                                     </ui:Target>
                                   </ui:Highlight.Target>
                                 </ui:Highlight>
-                                <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text 'INPUT  query_input'" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="SetValue_2" Text="[row(&quot;到着地&quot;).ToString]">
+                                <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text 'INPUT  query_input'" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="SetValue_2" Text="[row(&quot;到着駅&quot;).ToString]">
                                   <ui:SetValue.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2eca7bd0-95bd-415a-b9fe-e7422a7d274a" InformativeScreenshot="c0df02189d62de54a9c7e4fa163a8257" Selector="&lt;webctrl id='query_input' name='to' tag='INPUT' type='text' /&gt;" WaitForReady="COMPLETE">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2eca7bd0-95bd-415a-b9fe-e7422a7d274a" InformativeScreenshot="083c7166c88204ae1c2ff33fe8ced501" Selector="&lt;webctrl id='dnv-station-name' tag='INPUT' type='text' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -204,10 +206,10 @@
                                 </ui:Highlight>
                                 <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT  searchModuleSubm...'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
                                   <ui:Click.CursorPosition>
-                                    <ui:CursorPosition OffsetX="109" OffsetY="13" Position="TopLeft" />
+                                    <ui:CursorPosition OffsetX="90" OffsetY="12" Position="TopLeft" />
                                   </ui:Click.CursorPosition>
                                   <ui:Click.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ea2bda9e-091e-46a5-a470-e49f7cfeacdc" InformativeScreenshot="a65b514bb278c49dd4f4456a71c25be2" Selector="&lt;webctrl tag='INPUT' type='submit' /&gt;" WaitForReady="COMPLETE">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ea2bda9e-091e-46a5-a470-e49f7cfeacdc" InformativeScreenshot="4d7c0e5343fc9c05d2c03e2db45bc2e7" Selector="&lt;webctrl tag='INPUT' type='submit' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -218,7 +220,7 @@
                               <Parallel sap:VirtualizedContainerService.HintSize="840.8,153.6" sap2010:WorkflowViewState.IdRef="Parallel_4">
                                 <ui:Highlight HighlightTime="{x:Null}" Color="Highlight" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Highlight_4">
                                   <ui:Highlight.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cbbdf91-2f82-4081-a989-3fc3b982c35c" Selector="&lt;webctrl aaname='料金の安い順' parentid='tabflt' tag='SPAN' /&gt;">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cbbdf91-2f82-4081-a989-3fc3b982c35c" Selector="&lt;webctrl aaname='*運賃が安いルート*' parentid='left_pane' tag='A' /&gt;">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -230,10 +232,10 @@
                                 </ui:Highlight>
                                 <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SPAN'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
                                   <ui:Click.CursorPosition>
-                                    <ui:CursorPosition OffsetX="58" OffsetY="13" Position="TopLeft" />
+                                    <ui:CursorPosition OffsetX="42" OffsetY="6" Position="TopLeft" />
                                   </ui:Click.CursorPosition>
                                   <ui:Click.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3baefcae-b4c6-45cd-a3fd-43352822992e" InformativeScreenshot="60ed5643b0e84f3954ce4b19a2db54c3" Selector="&lt;webctrl aaname='料金の安い順' parentid='tabflt' tag='SPAN' /&gt;" WaitForReady="COMPLETE">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3baefcae-b4c6-45cd-a3fd-43352822992e" InformativeScreenshot="d222249069dc88fba12affa04bd5227d" Selector="&lt;webctrl aaname='*運賃が安いルート*' parentid='left_pane' tag='A' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -245,7 +247,7 @@
                               <Parallel sap:VirtualizedContainerService.HintSize="840.8,153.6" sap2010:WorkflowViewState.IdRef="Parallel_5">
                                 <ui:Highlight HighlightTime="{x:Null}" Color="Highlight" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Highlight_5">
                                   <ui:Highlight.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cbbdf91-2f82-4081-a989-3fc3b982c35c" Selector="&lt;webctrl parentid='rsltlst' isleaf='1' parentclass='fare' tag='SPAN' idx='1' /&gt;">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cbbdf91-2f82-4081-a989-3fc3b982c35c" Selector="&lt;webctrl id='total-ic-fare-text1' tag='SPAN' parentid='detail_route_0' /&gt;">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -257,7 +259,7 @@
                                 </ui:Highlight>
                                 <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'LI'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="GetValue_1">
                                   <ui:GetValue.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f36998e3-7049-45ee-be1e-36bb83a0b16f" InformativeScreenshot="cdc17e248740c09a608d46bc0eb33234" Selector="&lt;webctrl parentid='rsltlst' isleaf='1' parentclass='fare' tag='SPAN' idx='1' /&gt;" WaitForReady="COMPLETE">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f36998e3-7049-45ee-be1e-36bb83a0b16f" InformativeScreenshot="c86b3a4f353ace4e538687a595a8ce6b" Selector="&lt;webctrl id='total-ic-fare-text1' tag='SPAN' parentid='detail_route_0' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -268,14 +270,6 @@
                                   </ui:GetValue.Value>
                                 </ui:GetValue>
                               </Parallel>
-                              <Assign sap:VirtualizedContainerService.HintSize="840.8,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:String">[priceString]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">[priceString.Replace("円", "")]</InArgument>
-                                </Assign.Value>
-                              </Assign>
                               <Assign sap:VirtualizedContainerService.HintSize="840.8,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:Object">[row("金額")]</OutArgument>
@@ -285,7 +279,7 @@
                                 </Assign.Value>
                               </Assign>
                               <usa:DisplaySubtitleActivity ContinueOnError="{x:Null}" BackgroundColor="Black" BackgroundOpacity="0.8" DisplayName="Display Subtitle" DurationMS="3000" FontSize="38" sap:VirtualizedContainerService.HintSize="840.8,80.8" sap2010:WorkflowViewState.IdRef="DisplaySubtitleActivity_3" Message="[String.Format(&quot;検索した結果、金額は {0}円 でした。この情報を、Excelに書き込みます&quot;, priceString)]" TextColor="White" />
-                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[table]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="840.8,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="経路一覧">
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[table]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="840.8,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="検索ルート一覧">
                                 <ui:ExcelWriteRange.StartingCell>
                                   <InArgument x:TypeArguments="x:String">
                                     <Literal x:TypeArguments="x:String" Value="" />
@@ -295,7 +289,7 @@
                               <Parallel sap:VirtualizedContainerService.HintSize="840.8,153.6" sap2010:WorkflowViewState.IdRef="Parallel_6">
                                 <ui:Highlight HighlightTime="{x:Null}" Color="Highlight" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Highlight_6">
                                   <ui:Highlight.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cbbdf91-2f82-4081-a989-3fc3b982c35c" Selector="&lt;webctrl parentid='cat-pass' tag='A' /&gt;">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cbbdf91-2f82-4081-a989-3fc3b982c35c" Selector="&lt;webctrl aaname='乗換案内' tag='SPAN' /&gt;">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -307,10 +301,10 @@
                                 </ui:Highlight>
                                 <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  /'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
                                   <ui:Click.CursorPosition>
-                                    <ui:CursorPosition OffsetX="43" OffsetY="9" Position="TopLeft" />
+                                    <ui:CursorPosition OffsetX="28" OffsetY="15" Position="TopLeft" />
                                   </ui:Click.CursorPosition>
                                   <ui:Click.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="21e4446f-e5a7-4399-a218-3022e31d7d44" InformativeScreenshot="c446b791fcf02e74c2538167be00287a" Selector="&lt;webctrl parentid='cat-pass' tag='A' /&gt;" WaitForReady="COMPLETE">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="21e4446f-e5a7-4399-a218-3022e31d7d44" InformativeScreenshot="5338fc064f28439166d636674dd867d7" Selector="&lt;webctrl aaname='乗換案内' tag='SPAN' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -339,7 +333,7 @@
           </ActivityAction>
         </ui:ExcelApplicationScope.Body>
       </ui:ExcelApplicationScope>
-      <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Start Process" FileName="[Path.Combine(desktopPath, &quot;A00_ARデモ_Yahoo交通費検索&quot;, &quot;経路一覧.xlsx&quot;)]" sap:VirtualizedContainerService.HintSize="1066.4,88" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
+      <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Start Process" FileName="[Path.Combine(desktopPath, &quot;A00_ARデモ_Yahoo交通費検索&quot;, &quot;検索用ブック.xlsx&quot;)]" sap:VirtualizedContainerService.HintSize="1066.4,88" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
       <usa:DisplayPanelActivity ContinueOnError="{x:Null}" BackgroundColor="Black" BackgroundOpacity="0.8" DisplayName="Display Panel" DurationMS="3000" FontSize="38" sap:VirtualizedContainerService.HintSize="1066.4,80.8" sap2010:WorkflowViewState.IdRef="DisplayPanelActivity_2" Message="これで、プロセスの実行が終了しました！" TextColor="White" />
     </Sequence>
   </Sequence>
